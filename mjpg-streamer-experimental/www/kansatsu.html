@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microcapture</title>
+
+    <link rel="stylesheet" type="text/css" href="my-style.css" />
+    <script src="https://docs.opencv.org/4.5.5/opencv.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="scren">
+        <img id="streamimage" class="xform" src="./?action=stream" />
+      </div>
+
+      <div class="operation-panel">
+        <div class="operation-panel-part">
+          <div class="radio-area">
+            <input
+              class="radio-left"
+              id="picture"
+              type="radio"
+              value="picture"
+              v-model="checkPhotographType"
+            />
+            <label for="picture">picture</label>
+
+            <input
+              id="video"
+              type="radio"
+              value="video"
+              v-model="checkPhotographType"
+            />
+            <label for="video">video</label>
+
+            <input
+              class="radio-right"
+              id="timelapse"
+              type="radio"
+              value="timelapse"
+              v-model="checkPhotographType"
+            />
+            <label for="timelapse">timelapse</label>
+          </div>
+        </div>
+        <div class="operation-panel-part">
+          <div class="shoot-button">
+            <button v-on:click="shoot">shoot</button>
+          </div>
+        </div>
+        <div class="operation-panel-part">
+          <div class="setting-button">
+            <button v-on:click="showSettingModal">setting</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="history">
+        <button v-on:click="shiftLeft">＜</button>
+        <button v-on:click="shiftRight">＞</button>
+        <canvas id="history"> </canvas>
+      </div>
+
+      <div class="statusbar">{{ status }}</div>
+
+      <div class="setting-modal">
+        <!-- ② モーダル -->
+        <div
+          v-if="settingModalVisible"
+          v-on:click="closeSettingModal"
+          class="l-setting-modal"
+        >
+          <div v-on:click="cancelEvent" class="p-setting-modal">
+            <h2 class="p-setting-modal__title">Setttings</h2>
+            <div>
+              <h3>timelapse</h3>
+              <ul>
+                <li>
+                  <p>interval(seconds):</p>
+                  <input
+                    type="number"
+                    name="interval_seconds"
+                    id="interval_seconds"
+                  />
+                </li>
+                <li>
+                  <p>timer(hour):</p>
+                  <input type="number" name="timer_hour" id="timer_hour" />
+                </li>
+              </ul>
+            </div>
+
+            <!-- モーダルを閉じるボタン -->
+            <div
+              v-on:click="closeSettingModal"
+              class="p-setting-modal__btn--close"
+            >
+              ✗
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ モーダル表示時の背景色（薄い黒） -->
+        <div v-if="settingModalBgVisible" class="l-modal__bg"></div>
+      </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

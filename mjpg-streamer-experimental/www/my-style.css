@@ -1,0 +1,175 @@
+/*色の定義*/
+:root {
+  --main-background-color: #454545;
+
+  --oreration-pannel-background-color: #3b3b3b;
+
+  --modal-back-color: rgba(150, 150, 150, 0.7);
+
+  --setting-modal-background-color: #454545;
+  --setting-modal-border-color: black;
+  --setting-modal-title-color: #cccccc;
+  --setting-modal-label-color: #cccccc;
+
+  --button-frame-color: #1d1d1d;
+  --button-background-color: #2c2c2c;
+  --button-font-color: #cccccc;
+  --button-border-color: #333333;
+  --button-background-color-hover: #3c3c3c;
+  --button-font-color-hover: #ebebeb;
+  --button-border-color-hover: rgb(100, 100, 100);
+  --button-background-color-checked: #4d4d4d;
+  --button-font-color-checkd: #ebebeb;
+  --button-border-color-checked: rgb(100, 100, 100);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  background-color: var(--main-background-color);
+}
+
+img {
+  background-color: black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  height: 60%;
+}
+
+.operation-panel-part {
+  width: 33%;
+  text-align: center;
+}
+
+.operation-panel {
+  padding: 10px;
+  width: auto;
+  height: fit-content;
+  background-color: var(--oreration-pannel-background-color);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.radio-area {
+  background-color: var(--button-frame-color);
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.radio-left {
+  border: 1px solid;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.radio-right {
+  border: 1px solid;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.radio-area input[type="radio"] {
+  width: 20pt;
+  height: 20pt;
+  vertical-align: top;
+  display: none;
+}
+
+.radio-area input[type="radio"] + label {
+  padding: 0 4px;
+  font-size: 15pt;
+  border: 1px solid var(--button-border-color);
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: var(--pannel-background-color);
+  color: var(--button-font-color);
+}
+
+.radio-area input[type="radio"]:checked + label {
+  border: 1px solid var(--button-border-color-checked);
+  background-color: var(--button-background-color-checked);
+  color: var(--button-font-color-checkd);
+}
+
+.radio-area input[type="radio"]:not(:checked) + label:hover {
+  border: 1px solid var(--button-border-color-hover);
+  color: var(--button-font-color-hover);
+  background-color: var(--button-background-color-hover);
+}
+
+button {
+  padding: 0 15px;
+  font-size: 15pt;
+  border: 1px solid var(--button-border-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--button-font-color);
+  background-color: var(--button-background-color);
+}
+
+button:hover {
+  color: var(--button-font-color-hover);
+  background-color: var(--button-background-color-hover);
+  border: 1px solid var(--button-border-color-hover);
+}
+
+.l-modal__bg {
+  width: 100%;
+  height: 100%;
+  background: var(--modal-back-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* モーダルの設定 */
+.l-setting-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
+/* モーダルのサイズなど */
+.p-setting-modal {
+  width: 600px;
+  background: var(--oreration-pannel-background-color);
+  border-radius: 5px;
+  border: 1px solid var(--setting-modal-border-color);
+  padding: 10px 25px;
+  box-sizing: border-box;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* モーダル内 タイトル */
+.p-setting-modal__title {
+  color: var(--setting-modal-title-color);
+  font-size: 24px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+/* モーダル閉じるボタン */
+.p-setting-modal__btn--close {
+  font-size: 36px;
+  position: absolute;
+  top: 0px;
+  right: 20px;
+}
+
+.p-setting-modal__btn--close:hover {
+  cursor: pointer;
+}
